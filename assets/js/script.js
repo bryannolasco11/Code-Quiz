@@ -19,7 +19,7 @@ console.log(buttonEl);
 buttonEl.addEventListener("click", function() {
     console.log("This will start the quiz!");
     // I will make the instructions invisible
-    introduction.setAttribute("style", "display:none;");
+    main.setAttribute("style", "display:none;");
     
     //qcontainer.setAttribute("style", "display:visible");
     quizQuestion();
