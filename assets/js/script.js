@@ -22,6 +22,6 @@ buttonEl.addEventListener("click", function() {
     introduction.setAttribute("style", "display:none;");
     }
 
-        
-    
 );
+
+// function to ask a question and give options
