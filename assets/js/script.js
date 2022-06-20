@@ -50,14 +50,17 @@ function quizQuestion() {
     listEl.appendChild(li3);
     listEl.appendChild(li4);
 
+    // I need to assign class names to each element
+    li1.className = "option1";
+    li2.className = "option2";
+    li3.className = "option3";
+    li4.className = "option4";
 
-    //questionEl.className = "question";
+    //at some point, with the answer array, I need to designate the correct answer and randomize where the choices go
 
-    //var questionContainer = document.getElementById("qcontainer");
-    // give it a class name
 
-    //questionEl.appendChild(questionContainer);
-    //questionEl.textContent="question";
+
+    
     console.log("This is a new div");
     
 };
