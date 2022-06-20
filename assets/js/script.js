@@ -13,9 +13,15 @@
 
 // Press start to start quiz
 var buttonEl = document.querySelector("#startQuiz");
+
 console.log(buttonEl);
 // This gets the quiz started
 buttonEl.addEventListener("click", function() {
     console.log("This will start the quiz!");
+    // I will make the instructions invisible
+    introduction.setAttribute("style", "display:none;");
+    }
+
+        
     
-});
+);
