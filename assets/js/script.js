@@ -14,14 +14,14 @@
 // Press start to start quiz
 var buttonEl = document.querySelector("#startQuiz");
 // array of questions
-var questions = [
+var questions = 
     {
-        title: "Commonly used data types DO NOT INCLUDE:",
+        title: 'Commonly used data types DO NOT INCLUDE:',
         answers: ['alerts', 'strings', 'booleans', 'numbers'],
         correctAnswer: 'alerts'
-    },
+    };
     
-]
+
 
 
 console.log(buttonEl);
@@ -32,7 +32,7 @@ buttonEl.addEventListener("click", function() {
     main.setAttribute("style", "display:none;");
     title.setAttribute("style","visibility: visible");
     //qcontainer.setAttribute("style", "display:visible");
-    quizQuestion();
+    showQuestion();
 });
     
 
@@ -121,12 +121,36 @@ function quizQuestion() {
 
 
 
-function showQuestion(questions) {
+function showQuestion() {
     // selects where to put the question
-var titleDiv = document.getElementById('title');
-title.setAttribute("style","visibility: visible;");
-// modify it
-var listEl= document.createElement("ol");
-titleDiv.textContent = questions.title;
-console.log("My question function is working");
+    var titleDiv= document.getElementById('title');
+    
+    // modify it
+    //var listEl= document.createElement("ol");
+    titleDiv.textContent = questions.title;
+    console.log("My question function is working");
+    //var listEl= document.createElement("ol");
+    //var li1= document.createElement("li");
+    var button1 = document.createElement("button");
+    //var li2= document.createElement("li");
+    var button2 = document.createElement("button");
+    //var li3= document.createElement("li");
+    var button3 = document.createElement("button");
+    //var li4= document.createElement("li");
+    var button4 = document.createElement("button");
+    
+    button1.textContent = questions.answers;
+
+    titleDiv.appendChild(button1);
+    titleDiv.appendChild(button2);
+    titleDiv.appendChild(button3);
+    titleDiv.appendChild(button4);
+
+    button1.className = "options";
+    button2.className = "options";
+    button3.className = "options";
+    button4.className = "options";
+
+    
 };
+showQuestion(questions);
