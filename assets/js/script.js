@@ -146,11 +146,20 @@ function showQuestion() {
     titleDiv.appendChild(button3);
     titleDiv.appendChild(button4);
 
-    button1.className = "options";
-    button2.className = "options";
-    button3.className = "options";
-    button4.className = "options";
+    button1.className = "options1";
+    button2.className = "options2";
+    button3.className = "options3";
+    button4.className = "options4";
 
-    
+    let opt1 = document.querySelector('.options1');
+    console.log(opt1);
+
+    // I need to shuffle the answers
+
+    // I need to assign the array to each button
+
+    // I nned to make an option = correct value
+
+    // Correct Value sends me to the next question
 };
 showQuestion(questions);
