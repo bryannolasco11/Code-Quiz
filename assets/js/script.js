@@ -11,19 +11,29 @@
 // 5) If get it wrong, subract time
 // 6) Input high score
 
+
 // Press start to start quiz
 var buttonEl = document.querySelector("#startQuiz");
 // array of questions
-var questions = 
+var questions = [
+    
     {
-        title: 'Commonly used data types DO NOT INCLUDE:',
+        title: '1Commonly used data types DO NOT INCLUDE:',
+        answers: ['alerts', 'strings', 'booleans',  'numbers'],
+        correctAnswer: 'alerts'
+    },
+    {
+        title: '2Commonly used data types DO NOT INCLUDE:',
         answers1: 'alerts', 
         answers2: 'strings',
         answers3: 'booleans',
         answers4: 'numbers',
         correctAnswer: 'alerts'
-    };
- 
+    }
+];
+
+ var questionCounter = 0 
+    
 console.log(questions.answers1);
 console.log(questions.correctAnswer);
 console.log(buttonEl);
@@ -41,75 +51,99 @@ function quizquestions(){
     pickAnswer();
     //showQuestion(questions);
 }
+
+// For the time function use setInterval(timerFunc, 1000) 
+// - global variable called time gets minus 1 every second
+
+// For the endgame function pushes the current time and player initials as an object into an array from localstorage
+// var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
+// var playerScore = { time , initials}
+// savedScores.push(playerScore)
+// localStorage.setItem(JSON.stringify(savedScores))
+
+
+
+
 // Creates a question
-
-
-
-
-
 function showQuestion() {
+    
     // selects where to put the question
     var titleDiv= document.getElementById('title');
     
    
-    titleDiv.textContent = questions.title;
+    titleDiv.textContent = questions[questionCounter].title;
     console.log("My question function is working");
-    var button1 = document.createElement("button");
-    var button2 = document.createElement("button");
-    var button3 = document.createElement("button");
-    var button4 = document.createElement("button");
-    
-    button1.textContent = questions.answers1;
-    button2.textContent = questions.answers2;
-    button3.textContent = questions.answers3;
-    button4.textContent = questions.answers4;
-
-    titleDiv.appendChild(button1);
-    titleDiv.appendChild(button2);
-    titleDiv.appendChild(button3);
-    titleDiv.appendChild(button4);
-
-    button1.className = "options1";
-    button2.className = "options2";
-    button3.className = "options3";
-    button4.className = "options4";
-
-    button1.id = 'choicesId1';
-    button2.id = 'choicesId2';
-    button3.id = 'choicesId3';
-    button4.id = 'choicesId4';
-
-    var buttonEl1 = document.querySelector("#choicesId1");
-    var buttonEl2 = document.querySelector("#choicesId2");
-    var buttonEl3 = document.querySelector("#choicesId3");
-    var buttonEl4 = document.querySelector("#choicesId4");
-
-    buttonEl1.addEventListener("click", clickAnswer); 
-    buttonEl2.addEventListener("click", clickAnswer);
-    buttonEl3.addEventListener("click", clickAnswer);
-    buttonEl4.addEventListener("click", clickAnswer);
+    var answers = questions[questionCounter].answers
+    answers.forEach(function(answer,i){
+        var answerButton = document.createElement('button')
+        answerButton.textContent = answer
+        answerButton.className = `options-${i+1}`;
+        answerButton.id = `choicesId-${i+1}`;
+        answerButton.onclick = clickAnswer
+        titleDiv.appendChild(answerButton)
+    })
     };
 
-function clickAnswer() {
-    console.log(questions.answers1);
-    console.log(questions.correctAnswer);
-    console.log("this button got clicked");
-    if (questions.answer1 === questions.correctAnswer) {
-        console.log("this is correct");
-    } else if ("questions.answer1" !== "questions.correctAnswer") {
-        console.log("time will be subtracted");    
-        }
+// I nned to make an option = correct value
+// Correct Value sends me to the next question
+function clickAnswer(event) {
+    var chosenButton = event.target 
+    var answer = chosenButton.textContent
+    if(answer === questions[questionCounter].correctAnswer){
+        console.log('This is correct')
     }
+    questionCounter++ 
+    if(questionCounter >= questions.length){
+        // Put Endgame function Here
+        console.log('game is over')
+    } else { showQuestion()}
 
-    //let opt1 = document.querySelector('.options1');
-    //console.log(opt1);
+    // var i =0
+    //if (questions.answers1 === questions.correctAnswer || questions.answers2 === questions.correctAnswer || questions.answers3 === questions.correctAnswer || questions.answer4 === questions.correctAnswer) {
+    // if (questions.answers1 === questions.correctAnswer && i == 0) {
+    //     console.log("this is correct")
+    //     i++;
+    //     console.log(i)
+    // } else {
+    //     console.log("this is false");
+    // }
+
+    // if (questions.answers2 === questions.correctAnswer && i == 0) {
+    //     console.log("this is correct");
+    //     i++;
+    //     console.log(i);
+    // } else {
+    //     console.log("this is false");
+    // }
+
+    // if (questions.answers3 === questions.correctAnswer && i == 0) {
+    //     console.log("this is correct");
+    //     i++;
+    //     console.log(i);
+    // } else {
+    //     console.log("this is false");
+    // }
+
+    // if (questions.answers4 === questions.correctAnswer && i == 0) {
+    //     console.log("this is correct");
+    //     i++;
+    //     console.log(i);
+    // } else {
+    //     console.log("this is false");
+    // }
+};
+
+
+    
+
+    
 
     // I need to shuffle the answers
     
-    // I need to assign the array to each button
     
-    // I nned to make an option = correct value
+    
+    
 
-    // Correct Value sends me to the next question
+    
 
 
