@@ -16,8 +16,8 @@ var buttonEl = document.querySelector("#startQuiz");
 // array of questions
 var questions = [
     {
-        question: "Commonly used data types DO NOT INCLUDE:",
-        choice: ['alerts', 'strings', 'booleans', 'numbers'],
+        title: "Commonly used data types DO NOT INCLUDE:",
+        answers: ['alerts', 'strings', 'booleans', 'numbers'],
         correctAnswer: 'alerts'
     },
     
@@ -30,7 +30,7 @@ buttonEl.addEventListener("click", function() {
     console.log("This will start the quiz!");
     // I will make the instructions invisible
     main.setAttribute("style", "display:none;");
-    
+    title.setAttribute("style","visibility: visible");
     //qcontainer.setAttribute("style", "display:visible");
     quizQuestion();
 });
@@ -53,7 +53,7 @@ function quizQuestion() {
     var button4 = document.createElement("button");
    
 
-    listEl.textContent = "What color is the sky?";
+    //divEl.textContent = "What color is the sky?";
     //li1.textContent = "Red";
     //li2.textContent = "Orange";
     //li3.textContent = "Blue";
@@ -78,12 +78,13 @@ function quizQuestion() {
     //buttonOptions.appendChild(li1);
 
     // I need to assign class names to each element
-    divEl.className = "questionContainer";
+    //divEl.className = "title";
     li1.className = "option";
     li2.className = "option";
     li3.className = "option";
     li4.className = "option";
 
+    divEl.id = 'title';
     li1.id = 'option1';
     li2.id = 'option2';
     li3.id = 'option3';
@@ -104,6 +105,14 @@ function quizQuestion() {
     var btn3 = document.querySelector(".button3");
     var btn4 = document.querySelector(".button4");
 
+    
+    
+    
+    showQuestion(questions);
+
+
+
+    //listEl.innerText = question
     //listEl.textContent = question
     //onsole.log(question);
    
@@ -112,3 +121,12 @@ function quizQuestion() {
 
 
 
+function showQuestion(questions) {
+    // selects where to put the question
+var titleDiv = document.getElementById('title');
+title.setAttribute("style","visibility: visible;");
+// modify it
+var listEl= document.createElement("ol");
+titleDiv.textContent = questions.title;
+console.log("My question function is working");
+};
