@@ -17,13 +17,15 @@ var buttonEl = document.querySelector("#startQuiz");
 var questions = 
     {
         title: 'Commonly used data types DO NOT INCLUDE:',
-        answers: ['alerts', 'strings', 'booleans', 'numbers'],
+        answers1: 'alerts', 
+        answers2: 'strings',
+        answers3: 'booleans',
+        answers4: 'numbers',
         correctAnswer: 'alerts'
     };
-    
-
-
-
+ 
+console.log(questions.answers1);
+console.log(questions.correctAnswer);
 console.log(buttonEl);
 // This gets the quiz started
 buttonEl.addEventListener("click", function() {
@@ -35,10 +37,13 @@ buttonEl.addEventListener("click", function() {
     showQuestion();
 });
     
-
+function quizquestions(){
+    pickAnswer();
+    //showQuestion(questions);
+}
 // Creates a question
 
-function quizQuestion() {
+function quizQuestion2() {
     console.log("Question Started");
     var body = document.body;
     var divEl = document.createElement("div");
@@ -139,7 +144,10 @@ function showQuestion() {
     //var li4= document.createElement("li");
     var button4 = document.createElement("button");
     
-    button1.textContent = questions.answers;
+    button1.textContent = questions.answers1;
+    button2.textContent = questions.answers2;
+    button3.textContent = questions.answers3;
+    button4.textContent = questions.answers4;
 
     titleDiv.appendChild(button1);
     titleDiv.appendChild(button2);
@@ -151,15 +159,101 @@ function showQuestion() {
     button3.className = "options3";
     button4.className = "options4";
 
-    let opt1 = document.querySelector('.options1');
-    console.log(opt1);
+    button1.id = 'choicesId1';
+    button2.id = 'choicesId2';
+    button3.id = 'choicesId3';
+    button4.id = 'choicesId4';
+
+    var buttonEl1 = document.querySelector("#choicesId1");
+    var buttonEl2 = document.querySelector("#choicesId2");
+    var buttonEl3 = document.querySelector("#choicesId3");
+    var buttonEl4 = document.querySelector("#choicesId4");
+
+    buttonEl1.addEventListener("click", function() {
+        console.log(questions.answers1);
+        console.log(questions.correctAnswer);
+        console.log("this button got clicked");
+        if (questions.answer1 === questions.correctAnswer) {
+            console.log("this is correct");
+        } else if ("questions.answer1" !== "questions.correctAnswer") {
+            console.log("time will be subtracted");    
+        }
+
+    });
+
+    buttonEl2.addEventListener("click", function() {
+        if (questions.answer2 === questions.correctAnswer) {
+            console.log("this is correct");
+        } else {
+            console.log("time will be subtracted");
+        }
+
+    });
+
+    buttonEl3.addEventListener("click", function() {
+        if (questions.answer3 === questions.correctAnswer) {
+            console.log("this is correct");
+        } else {
+            console.log("time will be subtracted");
+        }
+    });
+
+    buttonEl4.addEventListener("click", function() {
+        if (questions.answer4 === questions.correctAnswer) {
+            console.log("this is correct");
+        } else {
+            console.log("time will be subtracted");
+        }
+
+    });
+
+    //let opt1 = document.querySelector('.options1');
+    //console.log(opt1);
 
     // I need to shuffle the answers
-
+    
     // I need to assign the array to each button
-
+    
     // I nned to make an option = correct value
 
     // Correct Value sends me to the next question
 };
-showQuestion(questions);
+
+function pickAnswer() {
+    showQuestion(questions);
+    var buttonEl1 = document.querySelector("#choicesId1");
+    var buttonEl2 = document.querySelector("#choicesId2");
+    var buttonEl3 = document.querySelector("#choicesId3");
+    var buttonEl4 = document.querySelector("#choicesId4");
+
+    buttonEl1.addEventListener("click", function() {
+        console.log(questions.answers1);
+        console.log("this button got clicked");
+        if (questions.answer1 === questions.correctAnswer) {
+            console.log("this is correct");
+            
+        }
+
+    });
+
+    buttonEl2.addEventListener("click", function() {
+        if (questions.answer2 === questions.correctAnswer) {
+            console.log("this is correct");
+        }
+
+    });
+
+    buttonEl3.addEventListener("click", function() {
+        if (questions.answer3 === questions.correctAnswer) {
+            console.log("this is correct");
+        }
+
+    });
+
+    buttonEl4.addEventListener("click", function() {
+        if (questions.answer4 === questions.correctAnswer) {
+            console.log("this is correct");
+        }
+
+    });
+}
