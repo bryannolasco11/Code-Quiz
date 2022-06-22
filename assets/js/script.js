@@ -54,7 +54,7 @@ console.log(buttonEl);
 buttonEl.addEventListener("click", function() {
     console.log("This will start the quiz!");
     // I will make the instructions invisible
-    main.setAttribute("style", "display:none;");
+    main.setAttribute("style", "display:none");
     title.setAttribute("style","visibility: visible");
     //qcontainer.setAttribute("style", "display:visible");
     startQuiz();
@@ -122,6 +122,7 @@ function clickAnswer(event) {
     if(questionCounter >= questions.length){
         // Put Endgame function Here
         console.log('game is over')
+        title.setAttribute("style","display: none");
     } else { 
         
         showQuestion()
