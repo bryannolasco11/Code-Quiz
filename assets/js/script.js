@@ -62,7 +62,7 @@ buttonEl.addEventListener("click", function() {
 });
     
 function startQuiz(){
-    //startTimer();
+    startTimer();
     showQuestion();
     //showQuestion(questions);
     
@@ -72,7 +72,7 @@ function startQuiz(){
 // - global variable called time gets minus 1 every second
 function startTimer(){
     console.log("This runs the timer");
-
+    return;
 };
 // For the endgame function pushes the current time and player initials as an object into an array from localstorage
 // var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
