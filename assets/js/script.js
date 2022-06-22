@@ -162,9 +162,11 @@ function clickAnswer(event) {
     if(questionCounter >= questions.length){
         // Put Endgame function Here
         console.log('game is over')
+        clearInterval(timerFunc);
         title.setAttribute("style","display: none");
         //must hide the timer
         stopwatch.setAttribute("style", "display: none");
+        console.log(remainingTime);
         
         
     } else { 
