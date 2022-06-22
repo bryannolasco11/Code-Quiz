@@ -1,0 +1,20 @@
+.qcontainer {
+    visibility: invisible;
+}
+
+.questionContainer li {
+    width: 50px;
+    
+}
+.questionContainer li:hover {
+    background-color: blue;
+}
+
+.container {
+    visibility: hidden;
+   
+}
+
+body {
+    background-color: bisque;
+}
