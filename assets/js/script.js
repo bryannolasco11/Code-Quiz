@@ -24,12 +24,19 @@ var questions = [
     },
     {
         title: '2Commonly used data types DO NOT INCLUDE:',
-        answers1: 'alerts', 
-        answers2: 'strings',
-        answers3: 'booleans',
-        answers4: 'numbers',
+        answers: ['alerts', 'strings', 'booleans',  'numbers'],
         correctAnswer: 'alerts'
-    }
+    },
+    {
+        title: '3Commonly used data types DO NOT INCLUDE:',
+        answers: ['alerts', 'strings', 'booleans',  'numbers'],
+        correctAnswer: 'alerts'
+    },
+    {
+        title: '4Commonly used data types DO NOT INCLUDE:',
+        answers: ['alerts', 'strings', 'booleans',  'numbers'],
+        correctAnswer: 'alerts'
+    },
 ];
 
  var questionCounter = 0 
@@ -75,7 +82,7 @@ function showQuestion() {
     console.log("My question function is working");
     var answers = questions[questionCounter].answers
     answers.forEach(function(answer,i){
-        var answerButton = document.createElement('button')
+        var answerButton = document.createElement('button');
         answerButton.textContent = answer
         answerButton.className = `options-${i+1}`;
         answerButton.id = `choicesId-${i+1}`;
