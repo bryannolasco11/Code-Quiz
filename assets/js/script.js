@@ -19,6 +19,7 @@
 
 
 // Press start to start quiz
+var name =""
 var buttonEl = document.querySelector("#startQuiz");
 var timerFunc = undefined
 var timerEl = document.getElementById('stopwatch');
@@ -56,7 +57,11 @@ var questions = [
 ];
 
 var questionCounter = 0 
-    
+
+var name = window.prompt("Hello. I don’t believe we have been introduced. What's your name?");
+alert(name + ", a pleasure to meet you. I am C-3PO, Human-Cyborg Relations.");
+
+console.log(name);
 console.log(questions.answers1);
 console.log(questions.correctAnswer);
 console.log(buttonEl);
@@ -69,7 +74,8 @@ buttonEl.addEventListener("click", function() {
     stopwatch.setAttribute("style","visibility: visible");
     startQuiz();
 });
-    
+
+
 function startQuiz(){
     startTimer();
     showQuestion();
