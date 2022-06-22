@@ -11,10 +11,20 @@
 // 5) If get it wrong, subract time
 // 6) Input high score
 
+// For the endgame function pushes the current time and player initials as an object into an array from localstorage
+// var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
+// var playerScore = { time , initials}
+// savedScores.push(playerScore)
+// localStorage.setItem(JSON.stringify(savedScores))
+
 
 // Press start to start quiz
 var buttonEl = document.querySelector("#startQuiz");
-var verifyAnswer = "";
+var timerFunc = undefined
+var timerEl = document.getElementById('stopwatch');
+var endEl = document.getElementById('end');
+// Need a global time variable
+var remainingTime = 75;
 // array of questions
 var questions = [
     
@@ -57,51 +67,73 @@ buttonEl.addEventListener("click", function() {
     main.setAttribute("style", "display:none");
     title.setAttribute("style","visibility: visible");
     stopwatch.setAttribute("style","visibility: visible");
-    //qcontainer.setAttribute("style", "display:visible");
     startQuiz();
 });
     
 function startQuiz(){
     startTimer();
     showQuestion();
-    //showQuestion(questions);
-    
+      
 };
 
 // For the time function use setInterval(timerFunc, 1000) 
 // - global variable called time gets minus 1 every second
 function startTimer(){
     console.log("This runs the timer");
-    return;
+    var timerFunc = setInterval(function() {
+        if (remainingTime >60) {
+            timerEl.textContent = remainingTime + " seconds remaining.  Plenty of time!";
+            remainingTime--;
+        }
+        
+        else if (remainingTime > 40 && remainingTime <= 60) {
+            timerEl.textContent = remainingTime + " seconds remaining.  You're actually doing well.  I'm a little surprised.";
+            remainingTime--;
+        }
+        else if (remainingTime > 20 && remainingTime <= 40) {
+            timerEl.textContent = remainingTime + " seconds remaining.  Just reminding you there is a timer.  No worries.";
+            remainingTime--;
+        }
+
+        else if (remainingTime > 10 && remainingTime <= 20) {
+            timerEl.textContent = remainingTime + " seconds remaining.  You better hustle!";
+            remainingTime--;
+        }
+
+        else if (remainingTime > 1 && remainingTime <= 10) {
+            timerEl.textContent = remainingTime + " seconds remaining.  It's crunch time!!";
+            remainingTime--;
+        }
+
+        else if (timerEl.textConent === 1) {
+            remainingTime + " second left.  You are almost out of time!";
+            remainingTime--;
+        } 
+
+        else {
+            timerEl.textContent = '';
+            clearInterval(timerFunc);
+            title.setAttribute("style", "display: none");
+            endEl.textContent = "Your time has run out!";
+        }
+
+    },1000);
 };
-// For the endgame function pushes the current time and player initials as an object into an array from localstorage
-// var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
-// var playerScore = { time , initials}
-// savedScores.push(playerScore)
-// localStorage.setItem(JSON.stringify(savedScores))
-
-
-
 
 // Creates a question
 function showQuestion() {
-    console.log(verifyAnswer);
-   
-    
     // selects where to put the question
     var titleDiv= document.getElementById('title');
-    
-   
     titleDiv.textContent = questions[questionCounter].title;
     console.log("My question function is working");
     var answers = questions[questionCounter].answers
     answers.forEach(function(answer,i){
-        var answerButton = document.createElement('button');
-        answerButton.textContent = answer
-        answerButton.className = `options-${i+1}`;
-        answerButton.id = `choicesId-${i+1}`;
-        answerButton.onclick = clickAnswer
-        titleDiv.appendChild(answerButton)
+    var answerButton = document.createElement('button');
+    answerButton.textContent = answer
+    answerButton.className = `options-${i+1}`;
+    answerButton.id = `choicesId-${i+1}`;
+    answerButton.onclick = clickAnswer
+    titleDiv.appendChild(answerButton)
     })
     };
 
@@ -112,13 +144,11 @@ function clickAnswer(event) {
     var answer = chosenButton.textContent
     if(answer === questions[questionCounter].correctAnswer){
         console.log('This is correct');
-        //title.setAttribute("style", "background-color:green");
-        //window.alert("This is correct!");
-        //var titleDiv= document.getElementById('title');
-        //var answerVerify= document.createElement("h2");
-        //answerVerify.textContent = "That's right.  You got lucky!";
-        //titleDiv.appendChild(answerVerify);
+       
         
+    } else {
+        // must penalize for wrong answer
+        remainingTime = remainingTime - 10;
     }
     questionCounter++ 
     console.log(questionCounter);
@@ -127,6 +157,10 @@ function clickAnswer(event) {
         // Put Endgame function Here
         console.log('game is over')
         title.setAttribute("style","display: none");
+        //must hide the timer
+        stopwatch.setAttribute("style", "display: none");
+        
+        
     } else { 
         
         showQuestion()
@@ -135,12 +169,6 @@ function clickAnswer(event) {
     
 };
 
-
-    
-
-    
-
-    // I need to shuffle the answers
     
     
     
