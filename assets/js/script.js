@@ -56,6 +56,7 @@ buttonEl.addEventListener("click", function() {
     // I will make the instructions invisible
     main.setAttribute("style", "display:none");
     title.setAttribute("style","visibility: visible");
+    stopwatch.setAttribute("style","visibility: visible");
     //qcontainer.setAttribute("style", "display:visible");
     startQuiz();
 });
@@ -69,7 +70,10 @@ function startQuiz(){
 
 // For the time function use setInterval(timerFunc, 1000) 
 // - global variable called time gets minus 1 every second
+function startTimer(){
+    console.log("This runs the timer");
 
+};
 // For the endgame function pushes the current time and player initials as an object into an array from localstorage
 // var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
 // var playerScore = { time , initials}

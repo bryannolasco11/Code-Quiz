@@ -10,11 +10,13 @@
     background-color: blue;
 }
 
-.container {
-    visibility: hidden;
-   
-}
 
+   
+
+
+.time {
+    visibility: hidden;
+}
 body {
     background-color: bisque;
 }
