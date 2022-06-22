@@ -14,32 +14,38 @@
 
 // Press start to start quiz
 var buttonEl = document.querySelector("#startQuiz");
+var verifyAnswer = "";
 // array of questions
 var questions = [
     
     {
-        title: '1Commonly used data types DO NOT INCLUDE:',
+        title: 'Commonly used data types DO NOT INCLUDE:',
         answers: ['alerts', 'strings', 'booleans',  'numbers'],
         correctAnswer: 'alerts'
     },
     {
-        title: '2Commonly used data types DO NOT INCLUDE:',
-        answers: ['alerts', 'strings', 'booleans',  'numbers'],
-        correctAnswer: 'alerts'
+        title: 'The condition in an if/else statement is enclosed with________.',
+        answers: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
+        correctAnswer: 'parenthesis'
     },
     {
-        title: '3Commonly used data types DO NOT INCLUDE:',
-        answers: ['alerts', 'strings', 'booleans',  'numbers'],
-        correctAnswer: 'alerts'
+        title: 'Arrays in JavaScript can be used to store _____.',
+        answers: ['numbers and strings', 'other arrays', 'booleans',  'all of the above'],
+        correctAnswer: 'all of the above'
     },
     {
-        title: '4Commonly used data types DO NOT INCLUDE:',
-        answers: ['alerts', 'strings', 'booleans',  'numbers'],
-        correctAnswer: 'alerts'
+        title: 'String values must be enclosed within ___ when being assigned to variables.',
+        answers: ['commas', 'curly brackets', 'quotes',  'parenthesis'],
+        correctAnswer: 'quotes'
+    },
+    {
+        title: 'A very useful tool used during development and debugging for printing conent to the debugger is:',
+        answers: ['JavaScript', 'terminal/bash', 'for loops',  'console.log'],
+        correctAnswer: 'console.log'
     },
 ];
 
- var questionCounter = 0 
+var questionCounter = 0 
     
 console.log(questions.answers1);
 console.log(questions.correctAnswer);
@@ -51,13 +57,15 @@ buttonEl.addEventListener("click", function() {
     main.setAttribute("style", "display:none;");
     title.setAttribute("style","visibility: visible");
     //qcontainer.setAttribute("style", "display:visible");
-    showQuestion();
+    startQuiz();
 });
     
-function quizquestions(){
-    pickAnswer();
+function startQuiz(){
+    //startTimer();
+    showQuestion();
     //showQuestion(questions);
-}
+    
+};
 
 // For the time function use setInterval(timerFunc, 1000) 
 // - global variable called time gets minus 1 every second
@@ -73,6 +81,8 @@ function quizquestions(){
 
 // Creates a question
 function showQuestion() {
+    console.log(verifyAnswer);
+   
     
     // selects where to put the question
     var titleDiv= document.getElementById('title');
@@ -97,47 +107,27 @@ function clickAnswer(event) {
     var chosenButton = event.target 
     var answer = chosenButton.textContent
     if(answer === questions[questionCounter].correctAnswer){
-        console.log('This is correct')
+        console.log('This is correct');
+        //title.setAttribute("style", "background-color:green");
+        //window.alert("This is correct!");
+        //var titleDiv= document.getElementById('title');
+        //var answerVerify= document.createElement("h2");
+        //answerVerify.textContent = "That's right.  You got lucky!";
+        //titleDiv.appendChild(answerVerify);
+        
     }
     questionCounter++ 
+    console.log(questionCounter);
+    
     if(questionCounter >= questions.length){
         // Put Endgame function Here
         console.log('game is over')
-    } else { showQuestion()}
+    } else { 
+        
+        showQuestion()
+    };
 
-    // var i =0
-    //if (questions.answers1 === questions.correctAnswer || questions.answers2 === questions.correctAnswer || questions.answers3 === questions.correctAnswer || questions.answer4 === questions.correctAnswer) {
-    // if (questions.answers1 === questions.correctAnswer && i == 0) {
-    //     console.log("this is correct")
-    //     i++;
-    //     console.log(i)
-    // } else {
-    //     console.log("this is false");
-    // }
-
-    // if (questions.answers2 === questions.correctAnswer && i == 0) {
-    //     console.log("this is correct");
-    //     i++;
-    //     console.log(i);
-    // } else {
-    //     console.log("this is false");
-    // }
-
-    // if (questions.answers3 === questions.correctAnswer && i == 0) {
-    //     console.log("this is correct");
-    //     i++;
-    //     console.log(i);
-    // } else {
-    //     console.log("this is false");
-    // }
-
-    // if (questions.answers4 === questions.correctAnswer && i == 0) {
-    //     console.log("this is correct");
-    //     i++;
-    //     console.log(i);
-    // } else {
-    //     console.log("this is false");
-    // }
+    
 };
 
 
