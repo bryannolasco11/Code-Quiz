@@ -28,6 +28,9 @@ var questionCounter = 0
 // Need a global time variable
 var remainingTime = 75;
 var score= 0;
+//var highScore = '';
+//var NumberHighScores=10;
+//var high_scores='highScores';
 //var myInterval = setInterval(myTimer, 1000)
 //var myTimer='';
 // array of questions
@@ -159,7 +162,7 @@ function clickAnswer(event) {
     
     if(questionCounter >= questions.length){
         // Put Endgame function Here
-        console.log('game is over')
+        
         clearInterval(timerFunc);
         console.log(timerFunc);
         title.setAttribute("style","display: none");
@@ -167,7 +170,16 @@ function clickAnswer(event) {
         stopwatch.setAttribute("style", "display: none");
         endClock.setAttribute("style", "display: none");
         localStorage.setItem('score',score);
+        //localStorage.setItem("score", JSON.stringify(score));
         console.log(score);
+        //var name=window.prompt("You have finished the Quiz.  I'm impressed.  What are your initals?"  )
+        // For the endgame function pushes the current time and player initials as an object into an array from localstorage
+    //  var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
+    //  var playerScore = { time , initials}
+    //  savedScores.push(playerScore)
+    //  localStorage.setItem(JSON.stringify(savedScores))
+        
+        
         
         
         
@@ -202,7 +214,29 @@ function endGame() {
    //else {
        //console.log("game over");
    //}
+   console.log(score);
+    //localStorage.getItem(score);
+    //localStorage.getItem(highScore);
+    //console.log(score + " in the endgame.");
+    //console.log(highScore + " in the endgame.");
+    
+    //console.log(highScore + " is the high score.");
+    //if (highScore === "null") {
+        //localStorage.setItem("score", highScore);
+        //var name = window.prompt("Wow.  You have achieved the highest score!  What is your name?");
+       // console.log ("game over");
+       // console.log(remainingTime);
+       
+        //return;
+   // } else if (score > highScore ){
+       // var name = window.prompt("Wow.  You have achieved the highest score!  What is your name?");
+       // localStorage.setItem("score", highScore);
+   // }
+   // else {
+   //     console.log("play again?");
+   // }
 };
+
 
     
     
