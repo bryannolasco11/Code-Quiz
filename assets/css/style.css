@@ -1,14 +1,23 @@
-.qcontainer {
-    visibility: invisible;
+
+header {
+    display: flex;
+    justify-content: center;
 }
 
-.questionContainer li {
-    width: 50px;
-    
+.time {
+    margin: 20px;
+    justify-content: center;
+
 }
-.questionContainer li:hover {
-    background-color: blue;
+.qcontainer {
+    visibility: invisible;
+    display: flex;
+    justify-content: left;
+    margin: 20px;
 }
+
+
+
 
 
    
@@ -18,5 +27,6 @@
     visibility: hidden;
 }
 body {
-    background-color: bisque;
+    background-color: rgb(196, 255, 254);
+    color: blue;
 }

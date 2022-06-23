@@ -24,8 +24,12 @@ var buttonEl = document.querySelector("#startQuiz");
 var timerFunc = undefined
 var timerEl = document.getElementById('stopwatch');
 var endEl = document.getElementById('end');
+var questionCounter = 0 
 // Need a global time variable
 var remainingTime = 75;
+var score= 0;
+//var myInterval = setInterval(myTimer, 1000)
+//var myTimer='';
 // array of questions
 var questions = [
     
@@ -55,16 +59,8 @@ var questions = [
         correctAnswer: 'console.log'
     },
 ];
+//var questionCounter = 0 
 
-var questionCounter = 0 
-
-var name = window.prompt("Hello. I don’t believe we have been introduced. What's your name?");
-alert(name + ", a pleasure to meet you. I am C-3PO, Human-Cyborg Relations.");
-
-console.log(name);
-console.log(questions.answers1);
-console.log(questions.correctAnswer);
-console.log(buttonEl);
 // This gets the quiz started
 buttonEl.addEventListener("click", function() {
     console.log("This will start the quiz!");
@@ -87,6 +83,7 @@ function startQuiz(){
 function startTimer(){
     console.log("This runs the timer");
     var timerFunc = setInterval(function() {
+    //function myTimer () {    
         if (remainingTime >60) {
             timerEl.textContent = remainingTime + " seconds remaining.  Plenty of time!";
             remainingTime--;
@@ -118,13 +115,12 @@ function startTimer(){
 
         else {
             timerEl.textContent = '';
-            clearInterval(timerFunc);
             title.setAttribute("style", "display: none");
-            endEl.textContent = "Your time has run out!";
+            
         }
 
-    },1000);
-};
+    }
+,1000)};
 
 // Creates a question
 function showQuestion() {
@@ -150,7 +146,9 @@ function clickAnswer(event) {
     var answer = chosenButton.textContent
     if(answer === questions[questionCounter].correctAnswer){
         console.log('This is correct');
-       
+        score++;
+        console.log(score);
+        alert("Correct!");
         
     } else {
         // must penalize for wrong answer
@@ -163,18 +161,47 @@ function clickAnswer(event) {
         // Put Endgame function Here
         console.log('game is over')
         clearInterval(timerFunc);
+        console.log(timerFunc);
         title.setAttribute("style","display: none");
         //must hide the timer
         stopwatch.setAttribute("style", "display: none");
-        console.log(remainingTime);
+        endClock.setAttribute("style", "display: none");
+        localStorage.setItem('score',score);
+        console.log(score);
         
         
+        
+        endGame();
     } else { 
         
         showQuestion()
-    };
+    };   
+};
 
+function endGame() {
+    // For the endgame function pushes the current time and player initials as an object into an array from localstorage
+    // var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
+    // var playerScore = { time , initials}
+    // savedScores.push(playerScore)
+    // localStorage.setItem(JSON.stringify(savedScores))
     
+    
+    //var highscore = localStorage.getItem("highscore");
+    //if(highscore === null) {
+       // highscore = 0;
+    //}
+
+    //if (remainingTime> highscore) {
+        //var name = window.prompt("Hello. I don’t believe we have been introduced. What's your name?");
+       // alert(name + ", a pleasure to meet you. I am C-3PO, Human-Cyborg Relations.");
+        //localStorage.setItem(highscore , remainingTime);
+        //localStorage.setItem("name", name);
+
+        //alert(name + " now has the high score of " + remainingTime + "!");
+    //}
+   //else {
+       //console.log("game over");
+   //}
 };
 
     
