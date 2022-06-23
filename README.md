@@ -5,7 +5,7 @@
 
 This is a timed quiz.  The user is given questions and must answer them in 75 seconds.  If the time is up, the quiz will end.  If a wrong answer is given, the user is penalized 10 seconds.  A high score list is popluated and the user is asked for their name if they achieve a high score.
 
-![alt text]()
+![alt text](../Code-Quiz/assets/images/codeQuiz.png)
 
 ## Credits
 https://github.com/bryannolasco11/
