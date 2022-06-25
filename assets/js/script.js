@@ -19,12 +19,20 @@
 
 
 // Press start to start quiz
+var name =""
 var buttonEl = document.querySelector("#startQuiz");
 var timerFunc = undefined
 var timerEl = document.getElementById('stopwatch');
 var endEl = document.getElementById('end');
+var questionCounter = 0 
 // Need a global time variable
 var remainingTime = 75;
+var score= 0;
+//var highScore = '';
+//var NumberHighScores=10;
+//var high_scores='highScores';
+//var myInterval = setInterval(myTimer, 1000)
+//var myTimer='';
 // array of questions
 var questions = [
     
@@ -54,12 +62,8 @@ var questions = [
         correctAnswer: 'console.log'
     },
 ];
+//var questionCounter = 0 
 
-var questionCounter = 0 
-    
-console.log(questions.answers1);
-console.log(questions.correctAnswer);
-console.log(buttonEl);
 // This gets the quiz started
 buttonEl.addEventListener("click", function() {
     console.log("This will start the quiz!");
@@ -69,7 +73,8 @@ buttonEl.addEventListener("click", function() {
     stopwatch.setAttribute("style","visibility: visible");
     startQuiz();
 });
-    
+
+
 function startQuiz(){
     startTimer();
     showQuestion();
@@ -81,6 +86,7 @@ function startQuiz(){
 function startTimer(){
     console.log("This runs the timer");
     var timerFunc = setInterval(function() {
+    //function myTimer () {    
         if (remainingTime >60) {
             timerEl.textContent = remainingTime + " seconds remaining.  Plenty of time!";
             remainingTime--;
@@ -112,13 +118,12 @@ function startTimer(){
 
         else {
             timerEl.textContent = '';
-            clearInterval(timerFunc);
             title.setAttribute("style", "display: none");
-            endEl.textContent = "Your time has run out!";
+            
         }
 
-    },1000);
-};
+    }
+,1000)};
 
 // Creates a question
 function showQuestion() {
@@ -144,7 +149,9 @@ function clickAnswer(event) {
     var answer = chosenButton.textContent
     if(answer === questions[questionCounter].correctAnswer){
         console.log('This is correct');
-       
+        score++;
+        console.log(score);
+        alert("Correct!");
         
     } else {
         // must penalize for wrong answer
@@ -155,21 +162,85 @@ function clickAnswer(event) {
     
     if(questionCounter >= questions.length){
         // Put Endgame function Here
-        console.log('game is over')
+        
+        clearInterval(timerFunc);
+        console.log(timerFunc);
         title.setAttribute("style","display: none");
         //must hide the timer
         stopwatch.setAttribute("style", "display: none");
+        endClock.setAttribute("style", "display: none");
+        localStorage.setItem('score',score);
+        //localStorage.setItem("score", JSON.stringify(score));
+        console.log(score);
+        stopTimer();
+        //var name=window.prompt("You have finished the Quiz.  I'm impressed.  What are your initals?"  )
+        // For the endgame function pushes the current time and player initials as an object into an array from localstorage
+    //  var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
+    //  var playerScore = { time , initials}
+    //  savedScores.push(playerScore)
+    //  localStorage.setItem(JSON.stringify(savedScores))
         
         
+        
+        
+        
+        endGame();
     } else { 
         
         showQuestion()
-    };
-
-    
+    };   
 };
 
+function stopTimer () {
+    clearInterval(timerFunc);
+
+console.log(timerFunc);
+};
+stopTimer();
+
+function endGame() {
+    // For the endgame function pushes the current time and player initials as an object into an array from localstorage
+    // var savedScores = JSON.parse(localStorage.getItem('savedScores')) || []
+    // var playerScore = { time , initials}
+    // savedScores.push(playerScore)
+    // localStorage.setItem(JSON.stringify(savedScores))
     
     
+    //var highscore = localStorage.getItem("highscore");
+    //if(highscore === null) {
+       // highscore = 0;
+    //}
+
+    //if (remainingTime> highscore) {
+        //var name = window.prompt("Hello. I don’t believe we have been introduced. What's your name?");
+       // alert(name + ", a pleasure to meet you. I am C-3PO, Human-Cyborg Relations.");
+        //localStorage.setItem(highscore , remainingTime);
+        //localStorage.setItem("name", name);
+
+        //alert(name + " now has the high score of " + remainingTime + "!");
+    //}
+   //else {
+       //console.log("game over");
+   //}
+   console.log(score);
+    //localStorage.getItem(score);
+    //localStorage.getItem(highScore);
+    //console.log(score + " in the endgame.");
+    //console.log(highScore + " in the endgame.");
     
-    
+    //console.log(highScore + " is the high score.");
+    //if (highScore === "null") {
+        //localStorage.setItem("score", highScore);
+        //var name = window.prompt("Wow.  You have achieved the highest score!  What is your name?");
+       // console.log ("game over");
+       // console.log(remainingTime);
+       
+        //return;
+   // } else if (score > highScore ){
+       // var name = window.prompt("Wow.  You have achieved the highest score!  What is your name?");
+       // localStorage.setItem("score", highScore);
+   // }
+   // else {
+   //     console.log("play again?");
+   // }
+};
