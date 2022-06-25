@@ -28,7 +28,7 @@ var questionCounter = 0
 // Need a global time variable
 var remainingTime = 75;
 var score= 0;
-//var highScore = '';
+var highScore = 0;
 //var NumberHighScores=10;
 //var high_scores='highScores';
 //var myInterval = setInterval(myTimer, 1000)
@@ -216,13 +216,13 @@ function endGame() {
    //}
    console.log(score);
     //localStorage.getItem(score);
-    //localStorage.getItem(highScore);
+    var highScore = JSON.parse(localStorage.getItem(highScore));
     //console.log(score + " in the endgame.");
-    //console.log(highScore + " in the endgame.");
+    console.log(highScore + " in the endgame.");
     
     //console.log(highScore + " is the high score.");
-    //if (highScore === "null") {
-        //localStorage.setItem("score", highScore);
+    if (highScore === "null") {
+        localStorage.setItem("highScore", score);
         //var name = window.prompt("Wow.  You have achieved the highest score!  What is your name?");
        // console.log ("game over");
        // console.log(remainingTime);
@@ -235,10 +235,4 @@ function endGame() {
    // else {
    //     console.log("play again?");
    // }
-};
-
-
-    
-    
-    
-    
+}};
